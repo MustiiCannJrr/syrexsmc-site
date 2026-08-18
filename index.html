@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syrexs.mc | Destek & Yönetim Botu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #313338; color: #dbdee1; line-height: 1.6; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background-color: #1e1f22; border-bottom: 1px solid #3f4147; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.2rem; font-weight: bold; color: #5865F2; display: flex; align-items: center; gap: 10px; }
+        nav { display: flex; align-items: center; gap: 25px; }
+        nav a { text-decoration: none; color: #949ba4; font-weight: 600; transition: color 0.2s; }
+        nav a:hover { color: #f2f3f5; }
+        .login-btn { background-color: #5865F2; color: white !important; padding: 8px 16px; border-radius: 4px; transition: background-color 0.2s; }
+        .login-btn:hover { background-color: #4752c4; }
+        .hero { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; background: linear-gradient(135deg, #1e1f22 0%, #2b2d31 100%); }
+        .hero-content h1 { font-size: 3rem; color: #f2f3f5; margin-bottom: 15px; }
+        .hero-content p { font-size: 1.1rem; color: #949ba4; max-width: 600px; margin: 0 auto 25px auto; }
+        .hero-buttons { display: flex; justify-content: center; gap: 15px; }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: transform 0.1s, background-color 0.2s; }
+        .btn.primary { background-color: #5865F2; color: white; }
+        .btn.primary:hover { background-color: #4752c4; }
+        .btn.secondary { background-color: #2b2d31; color: #f2f3f5; border: 1px solid #3f4147; }
+        .btn.secondary:hover { background-color: #35373c; }
+        .commands { padding: 60px 20px; text-align: center; background-color: #2b2d31; }
+        .commands h2 { font-size: 2rem; margin-bottom: 40px; color: #f2f3f5; }
+        .command-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .command-card { background-color: #1e1f22; padding: 25px; border-radius: 8px; border: 1px solid #3f4147; text-align: left; }
+        .command-card h3 { color: #5865F2; margin-bottom: 10px; font-family: monospace; font-size: 1.2rem; }
+        .command-card p { color: #949ba4; font-size: 0.95rem; }
+        .support { padding: 60px 20px; text-align: center; }
+        .support h2 { font-size: 2rem; margin-bottom: 15px; color: #f2f3f5; }
+        .support p { color: #949ba4; margin-bottom: 25px; }
+        .discord-btn { background-color: #5865F2; color: white; }
+        .discord-btn:hover { background-color: #4752c4; }
+        footer { text-align: center; padding: 20px; background-color: #1e1f22; color: #949ba4; border-top: 1px solid #3f4147; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo"><i class="fa-solid fa-robot"></i> Syrexs.mc Bot</div>
+        <nav>
+            <a href="#anasayfa">Ana Sayfa</a>
+            <a href="#komutlar">Komutlar</a>
+            <a href="#destek">Destek</a>
+            <a href="#" class="login-btn"><i class="fa-brands fa-discord"></i> Giriş Yap</a>
+        </nav>
+    </header>
+    <section id="anasayfa" class="hero">
+        <div class="hero-content">
+            <h1>Syrexs.mc Discord Botu</h1>
+            <p>Sunucunuzu yönetmek, destek taleplerini otomatikleştirmek ve güvenliği en üst düzeye çıkarmak için geliştirilmiş yeni nesil Discord botu.</p>
+            <div class="hero-buttons">
+                <a href="#komutlar" class="btn primary"><i class="fa-solid fa-terminal"></i> Komutları İncele</a>
+                <a href="#destek" class="btn secondary"><i class="fa-solid fa-headset"></i> Destek Al</a>
+            </div>
+        </div>
+    </section>
+    <section id="komutlar" class="commands">
+        <h2>Popüler Komutlar</h2>
+        <div class="command-grid">
+            <div class="command-card">
+                <h3>!panel / !kk</h3>
+                <p>Destek talebi (ticket) panelini belirlenen kanala gönderir ve butonlu sistemi aktif eder.</p>
+            </div>
+            <div class="command-card">
+                <h3>!ban / !kick</h3>
+                <p>Sunucu güvenliğini korumak için hızlı ve yetkili bazlı moderasyon işlemleri gerçekleştirir.</p>
+            </div>
+            <div class="command-card">
+                <h3>!yardım</h3>
+                <p>Botun tüm komutlarını ve kullanım detaylarını kullanıcıya özel mesaj olarak veya kanal üzerinden listeler.</p>
+            </div>
+        </div>
+    </section>
+    <section id="destek" class="support">
+        <h2>Destek & İletişim</h2>
+        <p>Herhangi bir sorunla karşılaştığında veya yardıma ihtiyacın olduğunda topluluğumuza katılabilirsin.</p>
+        <a href="https://discord.com" target="_blank" class="btn discord-btn"><i class="fa-brands fa-discord"></i> Discord Sunucusuna Katıl</a>
+    </section>
+    <footer>
+        <p>&copy; 2026 Syrexs.mc - Tüm hakları saklıdır.</p>
+    </footer>
+</body>
+</html>
