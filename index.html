@@ -3,85 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syrexs.mc | Destek & Yönetim Botu</title>
+    <title>Syrexs.mc | The Ultimate Discord Support System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #313338; color: #dbdee1; line-height: 1.6; }
-        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background-color: #1e1f22; border-bottom: 1px solid #3f4147; position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.2rem; font-weight: bold; color: #5865F2; display: flex; align-items: center; gap: 10px; }
-        nav { display: flex; align-items: center; gap: 25px; }
-        nav a { text-decoration: none; color: #949ba4; font-weight: 600; transition: color 0.2s; }
-        nav a:hover { color: #f2f3f5; }
-        .login-btn { background-color: #5865F2; color: white !important; padding: 8px 16px; border-radius: 4px; transition: background-color 0.2s; }
-        .login-btn:hover { background-color: #4752c4; }
-        .hero { height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 20px; background: linear-gradient(135deg, #1e1f22 0%, #2b2d31 100%); }
-        .hero-content h1 { font-size: 3rem; color: #f2f3f5; margin-bottom: 15px; }
-        .hero-content p { font-size: 1.1rem; color: #949ba4; max-width: 600px; margin: 0 auto 25px auto; }
-        .hero-buttons { display: flex; justify-content: center; gap: 15px; }
-        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 6px; text-decoration: none; font-weight: 600; transition: transform 0.1s, background-color 0.2s; }
-        .btn.primary { background-color: #5865F2; color: white; }
-        .btn.primary:hover { background-color: #4752c4; }
-        .btn.secondary { background-color: #2b2d31; color: #f2f3f5; border: 1px solid #3f4147; }
-        .btn.secondary:hover { background-color: #35373c; }
-        .commands { padding: 60px 20px; text-align: center; background-color: #2b2d31; }
-        .commands h2 { font-size: 2rem; margin-bottom: 40px; color: #f2f3f5; }
-        .command-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .command-card { background-color: #1e1f22; padding: 25px; border-radius: 8px; border: 1px solid #3f4147; text-align: left; }
-        .command-card h3 { color: #5865F2; margin-bottom: 10px; font-family: monospace; font-size: 1.2rem; }
-        .command-card p { color: #949ba4; font-size: 0.95rem; }
-        .support { padding: 60px 20px; text-align: center; }
-        .support h2 { font-size: 2rem; margin-bottom: 15px; color: #f2f3f5; }
-        .support p { color: #949ba4; margin-bottom: 25px; }
+        body { background-color: #121212; color: #e0e0e0; line-height: 1.6; }
+        
+        /* Üst Menü */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 60px; background-color: #121212; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 1.3rem; font-weight: bold; color: #f39c12; display: flex; align-items: center; gap: 10px; }
+        .logo span { background: #f39c12; color: #121212; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: 800; }
+        nav { display: flex; align-items: center; gap: 30px; }
+        nav a { text-decoration: none; color: #a0a0a0; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
+        nav a:hover { color: #ffffff; }
+        .login-btn { background-color: #f39c12; color: #121212 !important; padding: 8px 18px; border-radius: 6px; font-weight: 700 !important; transition: background-color 0.2s; }
+        .login-btn:hover { background-color: #d68910; }
+
+        /* Ana Alan ve Bilet Paneli Önizlemesi */
+        .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 60px; max-width: 1200px; margin: 0 auto; gap: 40px; min-height: 75vh; }
+        .hero-content { flex: 1; }
+        .hero-tag { background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(243, 156, 18, 0.3); }
+        .hero-content h1 { font-size: 3.2rem; color: #ffffff; margin-bottom: 20px; font-weight: 800; line-height: 1.2; }
+        .hero-content h1 span { color: #f39c12; }
+        .hero-content p { font-size: 1.1rem; color: #a0a0a0; margin-bottom: 30px; }
+        
+        .hero-buttons { display: flex; gap: 15px; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 8px; text-decoration: none; font-weight: 700; transition: transform 0.1s, background-color 0.2s; }
+        .btn.primary { background-color: #f39c12; color: #121212; }
+        .btn.primary:hover { background-color: #d68910; }
+        .btn.secondary { background-color: #1e1e1e; color: #ffffff; border: 1px solid #333; }
+        .btn.secondary:hover { background-color: #2a2a2a; }
+
+        /* Sağ Taraftaki Discord Bot Bilet Kutusu (Videodaki Gibi) */
+        .hero-preview { flex: 1; display: flex; justify-content: center; }
+        .ticket-card { background-color: #18181b; border: 1px solid #27272a; border-radius: 12px; width: 100%; max-width: 420px; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .ticket-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-bottom: 1px solid #27272a; padding-bottom: 12px; }
+        .ticket-title { font-weight: 700; color: #ffffff; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
+        .ticket-badge { background: #f39c12; color: #121212; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+        .ticket-body p { color: #a1a1aa; font-size: 0.9rem; margin-bottom: 15px; }
+        .ticket-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .t-btn { background: #27272a; color: #f4f4f5; border: none; padding: 10px; border-radius: 6px; font-weight: 600; font-size: 0.85rem; cursor: pointer; text-align: center; transition: background 0.2s; }
+        .t-btn:hover { background: #3f3f46; }
+        .t-btn.active { background: #f39c12; color: #121212; }
+
+        /* Komutlar Bölümü */
+        .commands { padding: 80px 20px; background-color: #161618; text-align: center; }
+        .commands h2 { font-size: 2.2rem; margin-bottom: 40px; color: #ffffff; font-weight: 700; }
+        .command-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
+        .command-card { background-color: #1c1c1e; padding: 30px; border-radius: 10px; border: 1px solid #2c2c2e; text-align: left; }
+        .command-card h3 { color: #f39c12; margin-bottom: 12px; font-family: monospace; font-size: 1.3rem; }
+        .command-card p { color: #a0a0a0; font-size: 0.95rem; }
+
+        /* Destek Bölümü */
+        .support { padding: 80px 20px; text-align: center; }
+        .support h2 { font-size: 2.2rem; margin-bottom: 15px; color: #ffffff; }
+        .support p { color: #a0a0a0; margin-bottom: 30px; font-size: 1.05rem; }
         .discord-btn { background-color: #5865F2; color: white; }
         .discord-btn:hover { background-color: #4752c4; }
-        footer { text-align: center; padding: 20px; background-color: #1e1f22; color: #949ba4; border-top: 1px solid #3f4147; font-size: 0.9rem; }
+
+        footer { text-align: center; padding: 25px; background-color: #101012; color: #777; border-top: 1px solid #222; font-size: 0.9rem; }
+
+        @media(max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; padding: 40px 20px; }
+            .hero-buttons { justify-content: center; }
+        }
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo"><i class="fa-solid fa-robot"></i> Syrexs.mc Bot</div>
+        <div class="logo"><i class="fa-solid fa-crown"></i> SYREXS.MC <span>APP</span></div>
         <nav>
             <a href="#anasayfa">Ana Sayfa</a>
-            <a href="#komutlar">Komutlar</a>
-            <a href="#destek">Destek</a>
-            <a href="https://discord.gg/gtTujEAQCD" target="_blank" class="login-btn"><i class="fa-brands fa-discord"></i> Giriş Yap</a>
+            <a href="#komutlar">Özellikler</a>
+            <a href="https://discord.gg/gtTujEAQCD" target="_blank" class="login-btn"><i class="fa-brands fa-discord"></i> Discord'a Katıl</a>
         </nav>
     </header>
+
     <section id="anasayfa" class="hero">
         <div class="hero-content">
-            <h1>Syrexs.mc Discord Botu</h1>
-            <p>Sunucunuzu yönetmek, destek taleplerini otomatikleştirmek ve güvenliği en üst düzeye çıkarmak için geliştirilmiş yeni nesil Discord botu.</p>
+            <div class="hero-tag"><i class="fa-solid fa-bolt"></i> Yeni Nesil Minecraft & Discord Botu</div>
+            <h1>Sunucunuzun İhtiyaç Duyacağı <span>En İyi Bot.</span></h1>
+            <p>Binlerce topluluk tarafından güvenilen; gelişmiş bilet (ticket) sistemi, moderasyon araçları ve tamamen özelleştirilebilir panelleriyle sunucu yönetimini kolaylaştırın.</p>
             <div class="hero-buttons">
-                <a href="#komutlar" class="btn primary"><i class="fa-solid fa-terminal"></i> Komutları İncele</a>
-                <a href="#destek" class="btn secondary"><i class="fa-solid fa-headset"></i> Destek Al</a>
+                <a href="https://discord.gg/gtTujEAQCD" target="_blank" class="btn primary"><i class="fa-brands fa-discord"></i> Botu Davet Et</a>
+                <a href="#komutlar" class="btn secondary">Özellikleri Keşfet</a>
+            </div>
+        </div>
+
+        <!-- Sağ Taraftaki Canlı Bilet Paneli Önizlemesi -->
+        <div class="hero-preview">
+            <div class="ticket-card">
+                <div class="ticket-header">
+                    <div class="ticket-title"><i class="fa-solid fa-ticket"></i> Bilet Kralı</div>
+                    <div class="ticket-badge">UYGULAMA</div>
+                </div>
+                <div class="ticket-body">
+                    <p style="font-weight: bold; color: #fff; margin-bottom: 5px;">Ticket King Destek Sistemi</p>
+                    <p>Lütfen talep türünüzle karşılık gelen düğmeye tıklayın. Seçim yaptıktan sonra, sorununuzu sorunuzu bildirmek için destek ekibimiz bilgilendirilecektir.</p>
+                </div>
+                <div class="ticket-buttons">
+                    <button class="t-btn active">Genel Soru</button>
+                    <button class="t-btn">Yetkili Başvuru</button>
+                    <button class="t-btn">Bug Raporu</button>
+                    <button class="t-btn">Öneri</button>
+                </div>
             </div>
         </div>
     </section>
+
     <section id="komutlar" class="commands">
-        <h2>Popüler Komutlar</h2>
+        <h2>Güçlü Komutlar & Özellikler</h2>
         <div class="command-grid">
             <div class="command-card">
                 <h3>!panel / !kk</h3>
-                <p>Destek talebi (ticket) panelini belirlenen kanala gönderir ve butonlu sistemi aktif eder.</p>
+                <p>Destek talebi (ticket) panelini belirlenen kanala gönderir ve butonlu etkileşimli sistemi aktif eder.</p>
             </div>
             <div class="command-card">
                 <h3>!ban / !kick</h3>
-                <p>Sunucu güvenliğini korumak için hızlı ve yetkili bazlı moderasyon işlemleri gerçekleştirir.</p>
+                <p>Sunucu güvenliğini korumak için hızlı ve yetkili bazlı moderasyon işlemlerini kusursuz gerçekleştirir.</p>
             </div>
             <div class="command-card">
                 <h3>!yardım</h3>
-                <p>Botun tüm komutlarını ve kullanım detaylarını kullanıcıya özel mesaj olarak veya kanal üzerinden listeler.</p>
+                <p>Botun tüm komutlarını ve kullanım detaylarını kullanıcıya özel mesaj veya kanal üzerinden listeler.</p>
             </div>
         </div>
     </section>
+
     <section id="destek" class="support">
         <h2>Destek & İletişim</h2>
         <p>Herhangi bir sorunla karşılaştığında veya yardıma ihtiyacın olduğunda topluluğumuza katılabilirsin.</p>
-        <a href="https://discord.gg/gtTujEAQCD" target="_blank" class="btn discord-btn"><i class="fa-brands fa-discord"></i> Discord Sunucusuna Katıl</a>
+        <a href="https://discord.gg/gtTujEAQCD" target="_blank" class="btn discord-discord discord-btn"><i class="fa-brands fa-discord"></i> Discord Sunucusuna Katıl</a>
     </section>
+
     <footer>
         <p>&copy; 2026 Syrexs.mc - Tüm hakları saklıdır.</p>
     </footer>
+
 </body>
 </html>
