@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syrexs.mc | The Ultimate Discord Support System</title>
+    <title>Syrexs.mc | Bot Dashboard & Yönetim</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -17,11 +17,10 @@
         nav a { text-decoration: none; color: #a0a0a0; font-weight: 600; font-size: 0.95rem; transition: color 0.2s; }
         nav a:hover { color: #ffffff; }
         
-        /* Giriş Yap / Oturum Aç Butonu (Üst) */
         .login-btn { background-color: #f39c12; color: #121212 !important; padding: 8px 18px; border-radius: 6px; font-weight: 700 !important; display: inline-flex; align-items: center; gap: 8px; transition: background-color 0.2s; }
         .login-btn:hover { background-color: #d68910; }
 
-        /* Ana Alan ve Arka Plan Efekti */
+        /* Ana Alan */
         .hero { display: flex; align-items: center; justify-content: space-between; padding: 80px 60px; max-width: 1200px; margin: 0 auto; gap: 40px; min-height: 75vh; background: radial-gradient(circle at 20% 30%, rgba(243, 156, 18, 0.08) 0%, transparent 50%); }
         .hero-content { flex: 1; }
         .hero-tag { background: rgba(243, 156, 18, 0.1); color: #f39c12; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 700; display: inline-block; margin-bottom: 20px; border: 1px solid rgba(243, 156, 18, 0.3); }
@@ -48,8 +47,25 @@
         .t-btn:hover { background: #2e2e36; }
         .t-btn.active { background: #f39c12; color: #121212; }
 
+        /* Dashboard (Panel) Bölümü */
+        .dashboard-section { padding: 80px 20px; background-color: #111114; text-align: center; border-top: 1px solid #1f1f23; border-bottom: 1px solid #1f1f23; }
+        .dashboard-section h2 { font-size: 2.2rem; margin-bottom: 10px; color: #ffffff; font-weight: 700; }
+        .dashboard-section > p { color: #a0a0a0; margin-bottom: 40px; }
+        .dashboard-container { max-width: 1000px; margin: 0 auto; background: #161619; border: 1px solid #222228; border-radius: 12px; padding: 30px; text-align: left; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .dash-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #222228; padding-bottom: 20px; margin-bottom: 20px; }
+        .dash-server-info { display: flex; align-items: center; gap: 15px; }
+        .dash-server-avatar { width: 50px; height: 50px; background: #f39c12; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; color: #121212; }
+        .dash-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 25px; }
+        .stat-card { background: #1c1c21; padding: 20px; border-radius: 8px; border: 1px solid #2b2b33; }
+        .stat-card h4 { color: #a0a0a0; font-size: 0.9rem; margin-bottom: 5px; }
+        .stat-card p { color: #ffffff; font-size: 1.4rem; font-weight: bold; }
+        .dash-settings { display: flex; flex-direction: column; gap: 15px; }
+        .setting-row { display: flex; justify-content: space-between; align-items: center; background: #1c1c21; padding: 15px 20px; border-radius: 8px; border: 1px solid #2b2b33; }
+        .setting-row span { font-weight: 600; color: #fff; }
+        .switch-btn { background: #22c55e; color: white; padding: 6px 14px; border-radius: 6px; font-size: 0.85rem; font-weight: bold; border: none; }
+
         /* Komutlar Bölümü */
-        .commands { padding: 80px 20px; background-color: #111114; text-align: center; border-top: 1px solid #1f1f23; border-bottom: 1px solid #1f1f23; }
+        .commands { padding: 80px 20px; text-align: center; }
         .commands h2 { font-size: 2.2rem; margin-bottom: 40px; color: #ffffff; font-weight: 700; }
         .command-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto; }
         .command-card { background-color: #161619; padding: 30px; border-radius: 10px; border: 1px solid #222228; text-align: left; }
@@ -57,11 +73,10 @@
         .command-card p { color: #a0a0a0; font-size: 0.95rem; }
 
         /* Destek Bölümü */
-        .support { padding: 80px 20px; text-align: center; background-color: #0d0d0f; }
+        .support { padding: 80px 20px; text-align: center; background-color: #111114; border-top: 1px solid #1f1f23; }
         .support h2 { font-size: 2.2rem; margin-bottom: 15px; color: #ffffff; }
         .support p { color: #a0a0a0; margin-bottom: 30px; font-size: 1.05rem; }
         
-        /* Tamamen Turuncu Yapılmış Discord Butonu */
         .discord-btn { background-color: #f39c12; color: #121212; }
         .discord-btn:hover { background-color: #d68910; }
 
@@ -79,8 +94,8 @@
         <div class="logo"><i class="fa-solid fa-crown"></i> SYREXS.MC <span>APP</span></div>
         <nav>
             <a href="#anasayfa">Ana Sayfa</a>
+            <a href="#dashboard">Dashboard</a>
             <a href="#komutlar">Özellikler</a>
-            <!-- Senin Bot ID'n Entegre Edilmiş Oturum Aç & Ekle Butonu -->
             <a href="https://discord.com/oauth2/authorize?client_id=1537873825453310082&scope=bot&permissions=8" target="_blank" class="login-btn"><i class="fa-brands fa-discord"></i> Oturum Aç & Ekle</a>
         </nav>
     </header>
@@ -91,13 +106,11 @@
             <h1>Sunucunuzun İhtiyaç Duyacağı <span>En İyi Bot.</span></h1>
             <p>Binlerce topluluk tarafından güvenilen; gelişmiş bilet (ticket) sistemi, moderasyon araçları ve tamamen özelleştirilebilir panelleriyle sunucu yönetimini kolaylaştırın.</p>
             <div class="hero-buttons">
-                <!-- Botu Ekle Butonu -->
                 <a href="https://discord.com/oauth2/authorize?client_id=1537873825453310082&scope=bot&permissions=8" target="_blank" class="btn primary"><i class="fa-brands fa-discord"></i> Botu Sunucuya Ekle</a>
-                <a href="https://discord.gg/gtTujEAQCD" target="_blank" class="btn secondary"><i class="fa-solid fa-headset"></i> Destek Sunucusu</a>
+                <a href="#dashboard" class="btn secondary"><i class="fa-solid fa-sliders"></i> Paneli İncele</a>
             </div>
         </div>
 
-        <!-- Sağ Taraftaki Canlı Bilet Paneli Önizlemesi -->
         <div class="hero-preview">
             <div class="ticket-card">
                 <div class="ticket-header">
@@ -113,6 +126,51 @@
                     <button class="t-btn">Yetkili Başvuru</button>
                     <button class="t-btn">Bug Raporu</button>
                     <button class="t-btn">Öneri</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dashboard (Panel) Önizleme Bölümü -->
+    <section id="dashboard" class="dashboard-section">
+        <h2>Sunucu Yönetim Paneli</h2>
+        <p>Botu sunucuna ekledikten sonra tüm ayarları bu arayüzden yönetebilirsin.</p>
+        
+        <div class="dashboard-container">
+            <div class="dash-header">
+                <div class="dash-server-info">
+                    <div class="dash-server-avatar">S</div>
+                    <div>
+                        <h3 style="color: #fff; font-size: 1.2rem;">Syrexs.mc Topluluk Sunucusu</h3>
+                        <p style="color: #a0a0a0; font-size: 0.85rem;">Durum: <span style="color: #22c55e; font-weight: bold;">● Aktif (Çevrimiçi)</span></p>
+                    </div>
+                </div>
+                <a href="https://discord.com/oauth2/authorize?client_id=1537873825453310082&scope=bot&permissions=8" target="_blank" class="btn primary" style="padding: 10px 18px; font-size: 0.9rem;"><i class="fa-brands fa-discord"></i> Yönetimi Aç</a>
+            </div>
+
+            <div class="dash-stats">
+                <div class="stat-card">
+                    <h4>Aktif Biletler</h4>
+                    <p>0</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Toplam Komut Kullanımı</h4>
+                    <p>1,428</p>
+                </div>
+                <div class="stat-card">
+                    <h4>Bot Gecikmesi (Ping)</h4>
+                    <p>24 ms</p>
+                </div>
+            </div>
+
+            <div class="dash-settings">
+                <div class="setting-row">
+                    <span><i class="fa-solid fa-ticket" style="color: #f39c12; margin-right: 8px;"></i> Destek (Ticket) Sistemi</span>
+                    <button class="switch-btn">Aktif</button>
+                </div>
+                <div class="setting-row">
+                    <span><i class="fa-solid fa-shield-halved" style="color: #f39c12; margin-right: 8px;"></i> Oto-Mod / Güvenlik Koruması</span>
+                    <button class="switch-btn">Aktif</button>
                 </div>
             </div>
         </div>
